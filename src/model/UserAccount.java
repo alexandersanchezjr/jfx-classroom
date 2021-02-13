@@ -1,13 +1,5 @@
 package model;
 
-enum Browser {
-	CHROME,
-	OPERA,
-	BRAVE,
-	FIREFOX,
-	SAFARI,
-	EDGE;
-}
 public class UserAccount{
 	
 	private String username;

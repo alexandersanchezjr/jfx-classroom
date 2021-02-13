@@ -171,7 +171,7 @@ public class ClassroomGUI {
 				    	
 						mainPane1.getChildren().setAll(addRegisterPane);
 						initializeTableView();
-						InputStream stream = new FileInputStream("X://ALEX JR//Desktop//XANDER//Micro SD Card//Wallpaper/Skulls-wallpaper-10280402.jpg");
+						InputStream stream = new FileInputStream(txtPhotoDirectory.getText());
 						Image img = new Image (stream);
 						imgProfilePhoto.setImage(img);
 						imgProfilePhoto.setFitWidth(75);
