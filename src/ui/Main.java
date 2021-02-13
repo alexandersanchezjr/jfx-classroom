@@ -22,7 +22,7 @@ public class Main extends Application{
 		launch(args);
 	}
 
-	@Override
+	@Override	
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
 

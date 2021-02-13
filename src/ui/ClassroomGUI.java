@@ -251,8 +251,13 @@ public class ClassroomGUI {
 		anchorPane2.getChildren().setAll(addRegisterPane);
     }
     @FXML
-    void logOutButton(ActionEvent event) {
-
+    void logOutButton(ActionEvent event) throws IOException {
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+		
+		fxmlLoader.setController(this);    	
+		Parent addRegisterPane = fxmlLoader.load();
+    	
+		anchorPane3.getChildren().setAll(addRegisterPane);
     }
 
 }
