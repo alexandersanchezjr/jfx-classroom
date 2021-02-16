@@ -10,7 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -161,23 +160,26 @@ public class ClassroomGUI {
  		    alert.showAndWait();
  		    
     	}else {
-		 
-			 for(int i = 0; i < classroom.getUserAccounts().size();i++) {
+    		boolean stop = false;
+			 for(int i = 0; i < classroom.getUserAccounts().size() && !stop;i++) {
 				 
 				 if(txtUser.getText().equals(classroom.getUserAccounts().get(i).getUsername())&& txtPass.getText().equals(classroom.getUserAccounts().get(i).getPassword())) {
+					 
 					 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
 						
-						fxmlLoader.setController(this);    	
-						Parent addRegisterPane = fxmlLoader.load();
+					 fxmlLoader.setController(this);    	
+					 Parent addRegisterPane = fxmlLoader.load();
 				    	
-						mainPane1.getChildren().setAll(addRegisterPane);
-						initializeTableView();
-						InputStream stream = new FileInputStream(txtPhotoDirectory.getText());
-						Image img = new Image (stream);
-						imgProfilePhoto.setImage(img);
-						imgProfilePhoto.setFitWidth(75);
-						imgProfilePhoto.setPreserveRatio(true);
-						labUsername.setText(txtUser.getText());
+					 mainPane1.getChildren().setAll(addRegisterPane);
+					 initializeTableView();
+					 InputStream stream = new FileInputStream(classroom.getUserAccounts().get(i).getPhotoDirectory());
+					 Image img = new Image (stream);
+					 imgProfilePhoto.setImage(img);
+					 imgProfilePhoto.setFitWidth(75);
+					 imgProfilePhoto.setPreserveRatio(true);
+					 labUsername.setText(txtUser.getText());
+					 
+					 stop = true;
 				 }else {
 					Alert alert = new Alert(Alert.AlertType.ERROR);
 		 		    alert.setHeaderText(null);
@@ -288,7 +290,29 @@ public class ClassroomGUI {
 
     @FXML
     void importContacts(ActionEvent event) {
+    	FileChooser fileChooser = new FileChooser ();
+    	fileChooser.setTitle("Open Contacts File");
+    	File file = fileChooser.showOpenDialog(mainPane1.getScene().getWindow());
+    	if (file != null)
+			try {
+				classroom.importData(file.getAbsolutePath());
+				Alert alert = new Alert(AlertType.INFORMATION);
+			    alert.setTitle("Classroom");
+			    alert.setHeaderText("Import Users");
+			    alert.setContentText("The users import was achived succesfully.");
+			
+			    alert.showAndWait();
+			    
 
+			} catch (IOException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+			    alert.setTitle("Classroom");
+			    alert.setHeaderText("Import Users Error");
+			    alert.setContentText("The users import cannot be completed.");
+			    
+			    alert.showAndWait();
+
+			}
     }
 
 
