@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane fx:id="mainPane1" maxHeight="368.0" maxWidth="401.0" minHeight="368.0" minWidth="401.0" prefHeight="368.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="85.0" layoutY="80.0" text="Sign in to Classroom">
@@ -29,6 +28,11 @@
       <Button layoutX="110.0" layoutY="257.0" mnemonicParsing="false" onAction="#signUpButton" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: black;" text="Sign Up" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="117.0" layoutY="329.0" mnemonicParsing="false" onAction="#importContacts" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: gray; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="Import contacts" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="11.0" />
          </font>
       </Button>
    </children>

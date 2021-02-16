@@ -34,7 +34,7 @@
       </Label>
       <ScrollPane layoutX="20.0" layoutY="93.0" prefHeight="240.0" prefWidth="367.0">
         <content>
-            <TableView fx:id="tvAccountsList" prefHeight="240.0" prefWidth="367.0">
+            <TableView fx:id="tvAccountsList" prefHeight="238.0" prefWidth="365.0">
               <columns>
                 <TableColumn fx:id="tcUsername" prefWidth="67.0" text="Username" />
                 <TableColumn fx:id="tcGender" prefWidth="89.0" text="Gender" />
@@ -59,14 +59,9 @@
       </Pane>
       <HBox alignment="CENTER" layoutX="21.0" layoutY="333.0" prefHeight="32.0" prefWidth="367.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" text="Export Contacts">
+            <Button mnemonicParsing="false" onAction="#exportContacts" prefHeight="25.0" prefWidth="165.0" text="Export Contacts">
                <HBox.margin>
                   <Insets right="30.0" />
-               </HBox.margin>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Import contacts" textAlignment="CENTER">
-               <HBox.margin>
-                  <Insets left="30.0" />
                </HBox.margin>
             </Button>
          </children>
