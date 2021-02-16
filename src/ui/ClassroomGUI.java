@@ -29,6 +29,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.scene.control.Alert;
 
@@ -259,5 +260,36 @@ public class ClassroomGUI {
     	
 		anchorPane3.getChildren().setAll(addRegisterPane);
     }
+    @FXML
+    void exportContacts(ActionEvent event) {
+    	DirectoryChooser directoryChooser = new DirectoryChooser();
+    	directoryChooser.setTitle("Select a folder");
+    	File selectedDirectory = directoryChooser.showDialog(anchorPane3.getScene().getWindow());
+    	if (selectedDirectory != null)
+			try {
+				File file = new File (selectedDirectory + "/" + "data.txt");
+				classroom.exportData(file.getPath());
+				Alert alert = new Alert(AlertType.INFORMATION);
+			    alert.setTitle("Classroom");
+			    alert.setHeaderText("Export Contacts");
+			    alert.setContentText("The contacts export was achived succesfully.");
+			
+			    alert.showAndWait();
+			} catch (IOException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+			    alert.setTitle("Contact Manager");
+			    alert.setHeaderText("Export Contacts Error");
+			    alert.setContentText("The contacts export cannot be completed.");
+			    
+			    alert.showAndWait();
+
+			}
+    }
+
+    @FXML
+    void importContacts(ActionEvent event) {
+
+    }
+
 
 }
